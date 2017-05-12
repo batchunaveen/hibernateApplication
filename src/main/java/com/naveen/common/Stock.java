@@ -1,6 +1,16 @@
 package com.naveen.common;
 
+import javax.persistence.*;
 import java.io.Serializable;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+
+@Entity
+@Table(name="stock", catalog = "sys" , uniqueConstraints = {
+		@UniqueConstraint(columnNames = "STOCK_NAME"),
+		@UniqueConstraint(columnNames = "STOCK_CODE")
+})
 
 public class Stock implements Serializable{
 
@@ -19,6 +29,9 @@ public class Stock implements Serializable{
 		this.stockName = stockName;
 	}
 
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "STOCK_ID" , unique = true, nullable = false)
 	public Integer getStockId() {
 		return stockId;
 	}
@@ -27,6 +40,7 @@ public class Stock implements Serializable{
 		this.stockId = stockId;
 	}
 
+	@Column(name = "STOCK_CODE", unique = true, nullable = false, length = 10)
 	public String getStockCode() {
 		return stockCode;
 	}
@@ -35,6 +49,8 @@ public class Stock implements Serializable{
 		this.stockCode = stockCode;
 	}
 
+
+	@Column(name = "STOCK_NAME", unique = true, nullable = false, length = 10)
 	public String getStockName() {
 		return stockName;
 	}

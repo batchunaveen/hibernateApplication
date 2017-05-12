@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.naveen.common.Stock;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
@@ -29,10 +30,10 @@ public class Test {
         session.beginTransaction();
         
         //Add new Employee object
-        EmployeeEntity emp = new EmployeeEntity();
-        emp.setEmail("naveenchanderb44@gmail.com");
-        emp.setFirstName("naveen");
-        emp.setLastName("chander");
+        Stock emp = new Stock();
+        emp.setStockId(1);
+        emp.setStockName("Hibernate");
+        emp.setStockCode("101A");
          
         //Save the employee in database
         session.save(emp);
